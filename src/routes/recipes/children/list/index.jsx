@@ -7,7 +7,7 @@ import { RecipesContext } from '../../index.context';
 import { init, remove } from '../../index.actions';
 
 const List = () => {
-	const { list, currentPage, dispatch } = React.useContext(RecipesContext);
+	const { list, dispatch } = React.useContext(RecipesContext);
 
 	const handleDeleteItem = (id) => {
 		DeleteRecipe(`/recipes/${id}`)
@@ -30,8 +30,10 @@ const List = () => {
 		));
 
 	React.useEffect(() => {
-		GetRecipeList(`/recipes?page=${currentPage}`).then((resp) => {
-			init(dispatch, resp.data);
+		GetRecipeList(`/recipes?page=${1}`).then((resp) => {
+			if (resp.status === 200) {
+				init(dispatch, resp.data);
+			}
 		});
 	}, []);
 

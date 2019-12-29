@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 const initialState = {
 	list: [],
 	filter: '',
-	currentPage: 1,
-	totalPages: 1,
+	currentPage: 0,
+	totalPages: 0,
 };
 
 const reducer = (state, { type, payload }) => {
@@ -13,9 +13,9 @@ const reducer = (state, { type, payload }) => {
 		case 'init':
 			return {
 				...state,
-				list: [...payload.recipes],
-				totalPages: payload.totalPages,
-				currentPage: payload.currentPage !== state.currentPage ? 1 : state.currentPage,
+				list: [...payload?.recipes],
+				totalPages: payload?.totalPages,
+				currentPage: payload?.currentPage !== state.currentPage ? 1 : state.currentPage,
 			};
 		case 'remove':
 			return {
