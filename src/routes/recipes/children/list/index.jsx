@@ -20,7 +20,7 @@ const List = () => {
 				console.log('error: ', error);
 			});
 	};
-	const renderList = () => list.map((i) => (
+	const renderList = () => list?.map((i) => (
 		<Recipe
 			onDelete={() => handleDeleteItem(i.id)}
 			key={i.id}
@@ -30,12 +30,10 @@ const List = () => {
 		));
 
 	React.useEffect(() => {
-		console.log('currentPage: ', currentPage);
-
 		GetRecipeList(`/recipes?page=${currentPage}`).then((resp) => {
 			init(dispatch, resp.data);
 		});
-	}, [currentPage]);
+	}, []);
 
 	return <Styled className='list-wrapper'>{renderList()}</Styled>;
 };

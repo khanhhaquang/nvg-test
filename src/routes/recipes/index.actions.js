@@ -9,7 +9,7 @@ export const remove = (dispatch, data) => dispatch({
 	});
 
 export const changePage = (dispatch, data) => dispatch({
-		type: 'switch',
+		type: 'change-page',
 		payload: data,
 	});
 

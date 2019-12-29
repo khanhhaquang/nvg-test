@@ -2,14 +2,13 @@ import React from 'react';
 import Styled from './index.styled';
 import { GetRecipesByFilter } from './index.actions';
 import { RecipesContext } from '../../index.context';
-import { init } from '../../index.actions';
+import { init, changeFilter } from '../../index.actions';
 
 const Filter = () => {
-	const [filter, setFilter] = React.useState('');
-	const { dispatch } = React.useContext(RecipesContext);
+	const { dispatch, filter } = React.useContext(RecipesContext);
 
 	const handleChange = (e) => {
-		setFilter(e.target.value);
+		changeFilter(dispatch, e.target.value);
 	};
 
 	const handleSubmit = () => {

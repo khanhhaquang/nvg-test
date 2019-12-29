@@ -16,6 +16,8 @@ npm install
 
 # Run
 
+NOTE: Start Scout24H-CH Api Server before starting app
+
 ```sh
 npm start
 ```

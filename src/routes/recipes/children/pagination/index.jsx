@@ -2,16 +2,24 @@
 import React from 'react';
 import Styled from './index.styled';
 import { RecipesContext } from '../../index.context';
-import { changePage } from '../../index.actions';
+import { init, changePage } from '../../index.actions';
+import { GetRecipeList } from '../list/index.actions';
 
 const Pagination = () => {
-	const { currentPage, totalPages, dispatch } = React.useContext(RecipesContext);
+	const { currentPage, filter, totalPages, dispatch } = React.useContext(RecipesContext);
+
+	const handleChangePage = (page) => {
+		GetRecipeList(`/recipes?search=${filter}&page=${page}`).then((resp) => {
+			changePage(dispatch, page);
+			init(dispatch, resp.data);
+		});
+	};
 
 	return (
 		<Styled className='pagination'>
 			{[...Array(totalPages)].map((item, index) => (
 				<div
-					onClick={() => changePage(dispatch, index + 1)}
+					onClick={() => handleChangePage(index + 1)}
 					key={index + 1}
 					className={`page ${currentPage === index + 1 ? 'active' : ''}`}
 				>
