@@ -1,0 +1,10 @@
+{
+	"verbose": true,
+	"moduleNameMapper": {
+		"^@configs(.*)$": "<rootDir>/src/configs$1",
+		"^@shared(.*)$": "<rootDir>/src/shared$1",
+		"^@helpers(.*)$": "<rootDir>/src/helpers$1",
+		"^@src(.*)$": "<rootDir>/src/src$1"
+	},
+	"setupFilesAfterEnv": ["<rootDir>/src/setupTests.js"]
+}
