@@ -9,9 +9,11 @@ const Pagination = () => {
 	const { currentPage, filter, totalPages, dispatch } = React.useContext(RecipesContext);
 
 	const handleChangePage = (page) => {
+		changePage(dispatch, page);
 		GetRecipeList(`/recipes?search=${filter}&page=${page}`).then((resp) => {
-			changePage(dispatch, page);
-			init(dispatch, resp.data);
+			if (resp.status === 200) {
+				init(dispatch, resp.data);
+			}
 		});
 	};
 
