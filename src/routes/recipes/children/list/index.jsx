@@ -1,0 +1,43 @@
+/* eslint-disable max-len */
+import React from 'react';
+import Recipe from '@shared/components/recipe';
+import Styled from './index.styled';
+import { GetRecipeList, DeleteRecipe } from './index.actions';
+import { RecipesContext } from '../../index.context';
+import { init, remove } from '../../index.actions';
+
+const List = () => {
+	const { list, currentPage, dispatch } = React.useContext(RecipesContext);
+
+	const handleDeleteItem = (id) => {
+		DeleteRecipe(`/recipes/${id}`)
+			.then((resp) => {
+				if (resp.status === 200) {
+					remove(dispatch, resp.data);
+				}
+			})
+			.catch((error) => {
+				console.log('error: ', error);
+			});
+	};
+	const renderList = () => list.map((i) => (
+		<Recipe
+			onDelete={() => handleDeleteItem(i.id)}
+			key={i.id}
+			title={i.title}
+			description={i.description}
+		/>
+		));
+
+	React.useEffect(() => {
+		console.log('currentPage: ', currentPage);
+
+		GetRecipeList(`/recipes?page=${currentPage}`).then((resp) => {
+			init(dispatch, resp.data);
+		});
+	}, [currentPage]);
+
+	return <Styled className='list-wrapper'>{renderList()}</Styled>;
+};
+
+export default List;

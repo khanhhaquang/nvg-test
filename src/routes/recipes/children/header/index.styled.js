@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
 const Styled = styled.header`
-	text-align: center;
+	text-align: left;
 
 	span {
 		display: block;
 	}
 
-	.movie-name {
+	.title {
 		font-weight: 700;
 	}
 `;

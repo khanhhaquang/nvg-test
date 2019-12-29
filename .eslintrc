@@ -35,7 +35,8 @@
 		"react/require-default-props": "off",
 		"no-console": "off",
 		"no-unused-vars": ["error"],
-		"no-tabs": "off"
+		"no-tabs": "off",
+		"object-curly-newline": "off"
 	},
 	"settings": {
 		"import/resolver": {

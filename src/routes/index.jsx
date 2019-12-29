@@ -1,10 +1,10 @@
 import React from 'react';
 import Styled from './index.styled';
-import Booking from './booking';
+import Recipes from './recipes';
 
 const App = () => (
 	<Styled>
-		<Booking />
+		<Recipes />
 	</Styled>
 );
 

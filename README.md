@@ -1,11 +1,11 @@
 # nvg-test
 
-A ticket box demo for Tiki Apply
+A recipes demo for NVG Apply
 
 # Installation
 
 ```sh
-git clone https://github.com/khanhhaquang/tiki-ticket.git
+git clone https://github.com/khanhhaquang/nvg-test.git
 ```
 
 Then

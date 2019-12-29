@@ -1,4 +1,6 @@
 /* eslint-disable no-mixed-spaces-and-tabs */
+export * from './http';
+
 export const formatNumber = (
 	number = 0,
 	places = 2,
