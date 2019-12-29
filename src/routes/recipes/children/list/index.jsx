@@ -35,7 +35,12 @@ const List = () => {
 		});
 	}, []);
 
-	return <Styled className='list-wrapper'>{renderList()}</Styled>;
+	return (
+		<Styled className='list-wrapper'>
+			{list?.length === 0 && <h2>Not found</h2>}
+			{renderList()}
+		</Styled>
+	);
 };
 
 export default List;
